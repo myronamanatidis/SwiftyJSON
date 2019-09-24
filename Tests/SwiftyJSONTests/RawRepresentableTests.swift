@@ -35,10 +35,11 @@ class RawRepresentableTests: XCTestCase {
         XCTAssertTrue(json.floatValue == 948394394.347384)
         
         let object: Any = json.rawValue
-        XCTAssertEqual(object as? Int, 948394394)
-        XCTAssertEqual(object as? Double, 948394394.347384)
-        XCTAssertTrue(object as! Float == 948394394.347384)
-        XCTAssertEqual(object as? NSNumber, 948394394.347384)
+        let objectNumber = object as? NSNumber
+        XCTAssertEqual(objectNumber?.intValue, 948394394)
+        XCTAssertEqual(objectNumber?.doubleValue, 948394394.347384)
+        XCTAssertTrue(objectNumber?.floatValue == 948394394.347384)
+        XCTAssertEqual(objectNumber, 948394394.347384)
     }
     
     func testBool() {
